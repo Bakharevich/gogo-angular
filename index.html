@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>GoGo Angular</title>
+</head>
+<body>
+    <a href="#/">Main</a>
+    <a href="#/search/keyword">Search</a>
+    <a href="#/maps/">Maps</a>
+    <a href="#/translate/">Translate</a>
+
+    <div class="container" ng-view></div>
+
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/searchController.js"></script>
+    <script src="app/controllers/mapsController.js"></script>
+    <script src="app/controllers/translateController.js"></script>
+    <script src="app/services/yandexFactory.js"></script>
+</body>
+</html>
