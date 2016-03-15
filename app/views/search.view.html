@@ -1,0 +1,67 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">GoGo</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">Home</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" ng-submit="searchRequest(word, 1)">
+                <div class="input-group">
+                    <input type="text" class="form-control red-shadow" ng-model="word" placeholder="">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </form>
+
+            <br/>
+        </div>
+        <div class="col-md-9">
+            <div id="yandex-premium-top"></div>
+
+            <div ng-repeat="value in results" class="repeat-animation">
+                <div>
+                    <a href="{{ value.url[0] }}" target="_blank" ng-bind-html="value.title"></a>
+                </div>
+                <div ng-bind-html="value.headline"></div>
+                <div ng-bind-html="value.passage"></div>
+
+
+                <div><a href="{{ value.url[0] }}" target="_blank" ng-bind="value.url[0] | escape | limitToDots: 50"></a></div>
+                <br/><br/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div id="yandex-premium-right"></div>
+        </div>
+        <div class="col-md-12">
+            Paging:
+
+            <div paging
+                 page="page"
+                 page-size="20"
+                 total="120"
+                 class="small"
+                 hide-if-empty="false"
+                 paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word)">
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+<div class="container text-center" ng-controller="IndexCtrl">
+    <div style="max-width: 700px; margin: 0 auto; margin-top: 100px;">
+        <form class="form-inline" ng-submit="searchRequest(word, 1)" >
+        <div class="input-group input-group-lg">
+            <input type="text" ng-model="word" name="word" class="form-control main_input_search" placeholder="Введите запрос..." />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+        </div>
+        </form>
+    </div>
+</div>
