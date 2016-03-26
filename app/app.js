@@ -1,4 +1,11 @@
-var app = angular.module('gogo', ['ngRoute', 'ngSanitize', 'rt.encodeuri', 'bw.paging']);
+var app = angular.module('gogo', [
+    'ngRoute',
+    'ngSanitize',
+    'rt.encodeuri',
+    'bw.paging',
+    'toastr',
+    'ymaps'
+]);
 
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider.
@@ -18,6 +25,22 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl: 'app/views/maps.view.html',
             controller: 'MapsCtrl'
         }).
+        when('/translate/', {
+            templateUrl: 'app/views/translate.view.html',
+            controller: 'TranslateCtrl'
+        }).
+        when('/signup/', {
+            templateUrl: 'app/views/signup.view.html',
+            controller: 'SignupCtrl'
+        }).
+        when('/signin/', {
+            templateUrl: 'app/views/signin.view.html',
+            controller: 'SigninCtrl'
+        }).
+        when('/signout/', {
+            templateUrl: 'app/views/signout.view.html',
+            controller: 'SignoutCtrl'
+        }).
         when('/test/', {
             templateUrl: 'app/views/test.view.html',
             controller: 'TestCtrl'
@@ -27,32 +50,35 @@ app.config(['$routeProvider', function($routeProvider){
         })
 }]);
 
-app.run(function($rootScope) {
+app.controller('MainCtrl', ['$scope','$http', 'Global', function($scope, $http, Global) {
+    //$scope.test = 'ilya mainctrl';
+    //$scope.ilya = 1;
+    $scope.test = Global.get();
+
+    // get info
     /*
-    $rootScope.searchMain = function() {
-        var word = $scope.word;
-        var word_encoded = window.encodeURIComponent(word);
+    if (!$scope.user) {
+        $http.get('/slim/users/me', {
+    })
+    .then(function onSuccess(response) {
+        //$scope.user = response.data.data;
 
-        if (word) {
-            $location.path('/search/' + word_encoded);
-        }
-        else {
-            alert('Type the search request');
-        }
-    }
-    */
-})
+        //$location.path('/');
+    })
+    .catch(function onError(err) {
 
-app.filter('limitToDots', function(limitToFilter) {
-    return function(text, limit) {
-        if (text.length >= limit) {
-            return limitToFilter(text, limit) + '...';
-        }
-        else {
-            return limitToFilter(text, limit);
-        }
+    });
+    }*/
+}]);
+
+app.run(function($rootScope) {
+    $rootScope.getUser = function()
+    {
+        //alert('Rootscope get user');
     }
 });
+
+
 
 app.filter('escape', function() {
     return window.decodeURIComponent;

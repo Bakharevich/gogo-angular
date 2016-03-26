@@ -1,0 +1,60 @@
+HTML {}
+BODY {}
+
+/* Main menu */
+UL.main_menu {
+
+}
+UL.main_menu LI {
+    font-size: 0.8em;
+    display: inline;
+    list-style-type: none;
+    padding-right: 31px;
+    text-transform: uppercase;
+
+}
+UL.main_menu LI A {
+    text-transform: uppercase;
+}
+A {
+    color: #0249bd;
+    text-decoration: underline;
+}
+A:hover {
+    color: #bd381e;
+}
+UL.main_menu LI.highlight A {
+    color: #43810b;
+}
+
+/* Input groups */
+.main_input_search {
+
+}
+
+/* Suggestion and only belarusian site */
+
+
+
+/* Footer */
+FOOTER {
+    font-size: 0.9em;
+    margin: 0 auto;
+    color: #6d6d6d;
+}
+FOOTER A {
+    color: #6d6d6d;
+}
+FOOTER A:hover {
+    color: #3f3f3f;
+}
+FOOTER .producer, FOOTER .producer A {
+    color: #a4a4a4;
+}
+/* Make footer fixed */
+.main_footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 16px;
+}

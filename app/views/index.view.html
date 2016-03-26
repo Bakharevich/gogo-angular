@@ -1,14 +1,64 @@
-<div class="container text-center" ng-controller="IndexCtrl">
-    <div style="max-width: 700px; margin: 0 auto; margin-top: 100px;">
-        <form class="form-inline" ng-submit="searchRequest(word, 1)" >
-        <div class="input-group input-group-lg">
-            <input type="text" ng-model="word" name="word" class="form-control main_input_search" placeholder="Введите запрос..." />
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-        </div>
-        </form>
-    </div>
+<div class="text-right hidden-xs" style="margin-top: 20px; margin-bottom: 65px; margin-right: 27px;">
+    <img src="img/main_settings.png" style="margin-right: 10px;" />
+    <span ng-if="user" style="font-size: 0.9em; color: #555;">{{user.email}}</span>
 </div>
+
+<div class="visible-xs padding-bottom-40-xs"></div>
+
+<div class="container" style="">
+    <div class="text-center" style="margin-bottom: 44px;">
+        <img src="img/main_logo.png" srcset="img/main_logo_x2.png" width="208" height="51" />
+    </div>
+
+    <div class="text-center" style="margin-bottom: 44px;">
+        <ul class="main_menu">
+            <li>Поиск</li>
+            <li><a href="#/maps/">Карта</a></li>
+            <li><a href="#/translate/">Переводчик</a></li>
+            <li class="highlight" ng-if="!user">
+                <a href="#/signin">Войти</a> / <a href="#/signup">Регистрация</a>
+            </li>
+            <li class="highlight" ng-if="user">
+                <a href="#/signout">Выйти</a>
+            </li>
+        </ul>
+    </div>
+
+    <form ng-submit="searchRequest(word, 1)">
+        <div style="max-width: 700px; margin: 0 auto; margin-bottom: 32px;">
+            <div class="input-group input-group-lg">
+                <input type="text" ng-model="word" class="form-control main_input_search" id="main_search" auto-focus />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </div>
+        </div>
+
+        <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
+            <div class="col-sm-6">
+                Например, <a href="#/search/рестораны в Минске">рестораны в Минске</a>
+            </div>
+            <div class="col-sm-6">
+                <input type="checkbox" name="only-belarus" id="only-belarus" /> <label for="only-belarus" style="font-weight: normal;"> search only belarusian websites</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer class="main_footer">
+    <div style="margin: 0 auto; max-width: 950px;">
+        <div class="col-sm-4 text-center-xs">
+            &copy; GoGo.by, 2009 - 2016
+            <a href="#/">Напишите нам</a>
+            <a href="#/">Твиттер</a>
+        </div>
+        <div class="col-sm-4 text-center text-center-xs">
+            Язык: русский, беларуский
+        </div>
+        <div class="col-sm-4 producer text-right text-center-xs">
+            Дизайн - <a href="http://skrotskystudio.by/" target="_blank" rel="nofollow">Студия Вадима Скротского</a>
+        </div>
+    </div>
+</footer>

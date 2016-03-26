@@ -1,0 +1,142 @@
+HTML {}
+BODY {
+    background: #f2f2f2;
+    font-size: 1.3em;
+    font-family: "Arial", sans-serif;
+}
+A {
+    text-decoration: underline;
+    color: #0055cc;
+}
+
+.topmenu {
+    margin-top: 3px;
+    margin-bottom: 15px;
+}
+.topmenu A {
+    font-size: 1em;
+    color: #4d4d4d;
+    text-decoration: underline;
+    margin-right: 30px;
+}
+.topmenu A.active {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.left-menu A {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #000;
+}
+.one-result {
+    margin-bottom: 25px;
+}
+
+/* Links */
+.title A {
+    color: #0055cc;
+    font-size: 1.2em;
+}
+.link {
+    margin-top: 2px;
+}
+.link A {
+    color: #338800;
+    text-decoration: none;
+}
+.link A:hover {
+    text-decoration: underline;
+}
+
+/* Pagination */
+.pagination {
+    border-radius: 0 !important;
+}
+.pagination > li > a, .pagination > li > span {
+    background-color: #f2f2f2;
+    color: #4c4c4c;
+    border: 1px solid #FFF;
+    padding: 5px 14px;
+    font-size: 1.1em;
+}
+.pagination > li > a:hover, .pagination > li > span:hover {
+    background-color: #dfdfdf;
+    color: #000;
+    border: 1px solid #FFF;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:active,
+.pagination > .active > span:active,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #b22d02;
+    color: #fff;
+    background: -webkit-linear-gradient(#b22d02, #fe7e64); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#b22d02, #fe7e64); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#b22d02, #fe7e64); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#b22d02, #fe7e64); /* Standard syntax */
+    border: 1px solid #FFF;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    margin-left: 0;
+}
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+/* Sorting */
+.results-sort-by {
+    text-transform: uppercase;
+    color: #808080;
+    font-size: 0.9em;
+    margin-bottom: 36px;
+}
+.results-sort-by A.active {
+    background: #f2f2f2;
+    font-weight: bold;
+    color: #000;
+    padding: 4px 6px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+.results-sort-by A {
+    color: #0055cc;
+}
+.results-additional {
+    font-size: 0.9em;
+}
+
+/* Common classes */
+.color-grey {
+    color: #808080;
+}
+.no-underline {
+    text-decoration: none;
+}
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+.margin-top-0 {
+    margin-top: 0px;
+}
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+/* Buttons */
+.btn-search-results {
+    background: -webkit-linear-gradient(#fefefe, #c3c3c3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fefefe, #c3c3c3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fefefe, #c3c3c3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fefefe, #c3c3c3); /* Standard syntax */
+    border-color: #ccc;
+    color: #333;
+}

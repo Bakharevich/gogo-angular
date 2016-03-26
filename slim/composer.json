@@ -1,0 +1,7 @@
+{
+  "require": {
+    "slim/slim": "*",
+    "monolog/monolog": "^1.18",
+    "slim/php-view": "^2.1"
+  }
+}

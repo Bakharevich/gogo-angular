@@ -1,58 +1,143 @@
-<!-- Static navbar -->
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
+<nav class="navbar navbar-default visible-xs">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/">GoGo</a>
+            <a class="navbar-brand" href="/">
+                <a href="#/"><img src="img/results_logo_xs.png" width="102" height="25" style="margin-top: 12px;" /></a>
+            </a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/">Home</a></li>
+                <li><a href="#/">Поиск</a></li>
+                <li><a href="#/mail">Карта</a></li>
+                <li><a href="#/translate">Переводчик</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
-    </div>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <form class="form-horizontal" ng-submit="searchRequest(word, 1)">
-                <div class="input-group">
-                    <input type="text" class="form-control red-shadow" ng-model="word" placeholder="">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
-                </div>
-            </form>
-
-            <br/>
+<!-- Блок для >xs -->
+<div class="container pull-left-sm pull-left-md pull-left-lg hidden-xs" style="max-width: 960px; border: 0px solid #CCC;">
+    <!-- Logo -->
+    <div class="col-lg-2 col-md-2 col-sm-2" style="padding: 0px; padding-top: 38px; ">
+        <a href="#/"><img src="img/results_logo.png" class="img-responsive hidden-sm" style="" /></a>
+        <a href="#/"><img src="img/results_logo_sm.png" class="img-responsive visible-sm" style="" /></a>
+    </div>
+    <!-- Search field -->
+    <div class="col-lg-10 col-md-10 col-sm-10" style="padding-left: 0px; padding-right: 0px;">
+        <div class="topmenu text-center-xs">
+            <a href="#/" class="active">Поиск</a>
+            <a href="#/mail">Почта</a>
+            <a href="#/maps">Карта</a>
+            <a href="#/translate">Переводчик</a>
         </div>
-        <div class="col-md-9">
-            <div id="yandex-premium-top"></div>
 
-            <div ng-repeat="value in results" class="repeat-animation">
-                <div>
+        <form ng-submit="searchRequest(word, 1)">
+            <div class="col-xs-12 col-sm-9" style="padding-left: 0px; padding-right: 0px;">
+                <div class="input-group">
+                    <input type="text" ng-model="word" class="form-control main_input_search" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-search-results" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                </div>
+
+                <div style="font-size: 0.9em;">
+                    <input type="checkbox" /> искать только на белорусских сайтах
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 hidden-xs">
+                <img src="img/results_yandex.png" />
+                <div style="font-size: 0.8em;">
+                    Нашлось 492 тыс. ответов
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Блок для >xs -->
+
+<!-- Блок для =XS -->
+<div class="container visible-xs">
+    <form ng-submit="searchRequest(word, 1)">
+        <div class="col-xs-12 col-sm-9" style="padding-left: 0px; padding-right: 0px;">
+            <div class="input-group">
+                <input type="text" ng-model="word" class="form-control main_input_search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-search-results" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+            </div>
+
+            <div style="font-size: 0.9em;">
+                <input type="checkbox" /> искать только на белорусских сайтах
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 hidden-xs">
+            <img src="img/results_yandex.png" />
+            <div style="font-size: 0.8em;">
+                Нашлось 492 тыс. ответов
+            </div>
+        </div>
+    </form>
+</div>
+<!-- /Блок для =XS -->
+
+<div class="clearfix"></div>
+<div class="hidden-xs" style="margin-top: 13px;"></div>
+<div class="visible-xs" style="margin-top: 13px;"></div>
+
+<div class="container no-padding-xs" style="max-width: 960px; border: 0px solid #666; float: left;">
+    <div class="col-sm-2 left-menu" style="padding-left: 0;">
+        <div class="hidden-xs" style="margin-bottom: 30px;"></div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-6 text-center left-item left-item-sm">
+                <a href="javascript://" class="no-underline" ng-click="showDevMsg()">
+                    <span class="glyphicon glyphicon-globe icon-size icon-size-xs" style="color: #545454;"></span><br/>
+                    Весь Интернет
+                </a>
+            </div>
+
+            <div class="col-sm-12 col-xs-6 text-center left-item left-item-sm">
+                <span class="glyphicon glyphicon-film icon-size icon-size-xs" style=" color: #545454;"></span>
+                <br/>
+                <a href="javascript://" class="no-underline" ng-click="showDevMsg()">Торренты</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10" style="padding-top: 25px;padding-left: 75px;background: #FFF; border: 1px solid #d0d0d0; box-shadow: 0px 0px 3px 1px rgba(119, 119, 119, 0.35);">
+        <div class="col-md-12 text-center loading" ng-show="loadingSearch">
+            <img src="/img/ajax-loader.gif" />
+        </div>
+        <div class="col-md-9" style="padding-left: 0px;" ng-repeat="value in results">
+            <div class="one-result">
+                <div class="title">
+                    <img style="position: absolute; display: block; left: -35px; top: 2px;" class="favicon" width="16" height="16" border="0" ng-src="http://favicon.yandex.net/favicon/{{value.domain[0]}}" onerror="this.src='/images/blank_favicon.gif'">
                     <a href="{{ value.url[0] }}" target="_blank" ng-bind-html="value.title"></a>
                 </div>
-                <div ng-bind-html="value.headline"></div>
-                <div ng-bind-html="value.passage"></div>
-
-
-                <div><a href="{{ value.url[0] }}" target="_blank" ng-bind="value.url[0] | escape | limitToDots: 50"></a></div>
-                <br/><br/>
+                <div class="description">
+                    <div ng-bind-html="value.headline"></div>
+                    <div ng-bind-html="value.passage"></div>
+                </div>
+                <div class="link">
+                    <a href="{{ value.url[0] }}" ng-bind="value.url[0] | escape | limitToDots: 50" target="_blank" ></a>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div id="yandex-premium-right"></div>
+            ADS YANDEX
         </div>
-        <div class="col-md-12">
-            Paging:
-
+        <div class="col-md-12" style="padding-left: 0px;">
             <div paging
                  page="page"
                  page-size="20"
@@ -61,7 +146,33 @@
                  hide-if-empty="false"
                  paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word)">
             </div>
+            <!--
+            <nav class="margin-bottom-20">
+                <ul class="pagination margin-top-10">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            -->
+
+            <div class="results-sort-by">
+                Отсортировано:
+                <a href="javascript://" class="active" ng-click="showDevMsg()">по релевантности</a>
+                <a href="javascript://" ng-click="showDevMsg()">по дате</a>
+            </div>
+
+            <div class="results-additional">
+                <p>При поиске отдано предпочтение <b>сайтам из Беларуси</b>. <a href="javascript://" ng-click="showDevMsg()">Поискать в России</a></p>
+                <p class="color-grey">Поискать «бозон хиггса» в других поисковых системах: <a href="javascript://" ng-click="showDevMsg()">Google</a>, <a href="javascript://" ng-click="showDevMsg()">Bing</a></p>
+            </div>
         </div>
     </div>
-
 </div>
