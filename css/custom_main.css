@@ -1,6 +1,13 @@
 HTML {}
 BODY {}
 
+/* Settings */
+.main-settings {
+    margin-top: 20px;
+    margin-bottom: 65px;
+    margin-right: 27px;
+}
+
 /* Main menu */
 UL.main_menu {
 
@@ -31,30 +38,45 @@ UL.main_menu LI.highlight A {
 .main_input_search {
 
 }
+.main-suggestion {
+    color: #808080;
+    font-style: italic;
+}
+.main-options {
+    color: #262626;
+}
 
 /* Suggestion and only belarusian site */
 
 
 
 /* Footer */
-FOOTER {
-    font-size: 0.9em;
+FOOTER {;
+    font-size: 0.75em;
     margin: 0 auto;
-    color: #6d6d6d;
+    color: #808080;
+    font-family: Verdana,Geneva,sans-serif;
 }
 FOOTER A {
-    color: #6d6d6d;
+    color: #808080;
 }
-FOOTER A:hover {
-    color: #3f3f3f;
+FOOTER A:hover, FOOTER A:focus {
+    color: #262626;
 }
 FOOTER .producer, FOOTER .producer A {
     color: #a4a4a4;
 }
 /* Make footer fixed */
-.main_footer {
+.main-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding-bottom: 16px;
+}
+
+.main-footer .links A {
+    margin-left: 10px;
+}
+.main-footer .langs SPAN {
+    color: #000;
 }

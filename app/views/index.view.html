@@ -1,5 +1,5 @@
-<div class="text-right hidden-xs" style="margin-top: 20px; margin-bottom: 65px; margin-right: 27px;">
-    <img src="img/main_settings.png" style="margin-right: 10px;" />
+<div class="text-right hidden-xs main-settings">
+    <img src="img/main_settings.png" style="" />
     <span ng-if="user" style="font-size: 0.9em; color: #555;">{{user.email}}</span>
 </div>
 
@@ -13,14 +13,17 @@
     <div class="text-center" style="margin-bottom: 44px;">
         <ul class="main_menu">
             <li>Поиск</li>
-            <li><a href="#/maps/">Карта</a></li>
+            <li><a href="#/maps/">Карты</a></li>
             <li><a href="#/translate/">Переводчик</a></li>
+            <li><a href="http://mail.yandex.ru/for/gogo.by" target="_blank" rel="nofollow">Почта</a></li>
+            <!--
             <li class="highlight" ng-if="!user">
                 <a href="#/signin">Войти</a> / <a href="#/signup">Регистрация</a>
             </li>
             <li class="highlight" ng-if="user">
                 <a href="#/signout">Выйти</a>
             </li>
+            -->
         </ul>
     </div>
 
@@ -37,25 +40,30 @@
         </div>
 
         <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
-            <div class="col-sm-6">
+            <div class="col-sm-6 main-suggestion">
                 Например, <a href="#/search/рестораны в Минске">рестораны в Минске</a>
             </div>
-            <div class="col-sm-6">
-                <input type="checkbox" name="only-belarus" id="only-belarus" /> <label for="only-belarus" style="font-weight: normal;"> search only belarusian websites</label>
+            <div class="col-sm-6 main-options">
+                <input type="checkbox" name="only-belarus" id="only-belarus" />
+                <label for="only-belarus" style="font-weight: normal;"> только на сайтах из Беларуси</label>
             </div>
         </div>
     </form>
 </div>
 
-<footer class="main_footer">
+<footer class="main-footer">
     <div style="margin: 0 auto; max-width: 950px;">
-        <div class="col-sm-4 text-center-xs">
-            &copy; GoGo.by, 2009 - 2016
-            <a href="#/">Напишите нам</a>
-            <a href="#/">Твиттер</a>
+        <div class="col-sm-4 text-center-xs links">
+            &copy; GoGo.by
+            <a href="#/contacts">Контакты</a>
+            <a href="http://twitter.com/gogo_by" target="_blank">Твиттер</a>
+            <a href="http://vk.com/gogoby" target="_blank">вКонтакте</a>
         </div>
-        <div class="col-sm-4 text-center text-center-xs">
-            Язык: русский, беларуский
+        <div class="col-sm-4 text-center text-center-xs langs">
+            Язык:
+            <span>русский</span>,
+            <a href="#/" onclick="alert('Яшчэ не перакладзена...');">беларуский</a>
+            (<a href="#/">или &laquo;белорусский?&raquo;</a>)
         </div>
         <div class="col-sm-4 producer text-right text-center-xs">
             Дизайн - <a href="http://skrotskystudio.by/" target="_blank" rel="nofollow">Студия Вадима Скротского</a>
