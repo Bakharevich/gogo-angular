@@ -84,13 +84,15 @@ angular.module("gogo")
             method: 'GET',
             url: '/api/checkcaptcha.php?key=' + $scope.results.key + '&rep=' + $scope.captchaValue
         }).then(function succcessCallback(response) {
-            console.log(response.data);
-            $scope.captchaData = response.data;
+            //console.log(response.data);
+            //$scope.captchaData = response.data;
+
+            //alert('success');
+
+            // try search one more time
+            $scope.searchRequest(word_decoded + ' ', $scope.page);
         }, function errorCallback(response) {
             alert("error!");
         });
-
-        // try search one more time
-        $scope.searchRequest(word, $scope.page);
     }
 }]);
