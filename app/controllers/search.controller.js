@@ -11,8 +11,18 @@ angular.module("gogo")
     $scope.loadingSearch = true;
 
     // send request
+    /*
     $http.get('/api/results.php?q=' + word + '&p=' + $scope.page).success(function(data) {
         $scope.results = data.results;
+    });*/
+    $http({
+        method: 'GET',
+        url: '/api/results.php?q=' + word + '&p=' + $scope.page
+    }).then(function succcessCallback(response) {
+        console.log(response.data);
+        $scope.results = response.data;
+    }, function errorCallback(response) {
+        alert("error!");
     });
 
 
@@ -65,5 +75,22 @@ angular.module("gogo")
         else {
             alert('Type the search request');
         }
+    }
+
+    $scope.sendCaptcha = function()
+    {
+        // send captcha value
+        $http({
+            method: 'GET',
+            url: '/api/checkcaptcha.php?key=' + $scope.results.key + '&rep=' + $scope.captchaValue
+        }).then(function succcessCallback(response) {
+            console.log(response.data);
+            $scope.captchaData = response.data;
+        }, function errorCallback(response) {
+            alert("error!");
+        });
+
+        // try search one more time
+        $scope.searchRequest(word, $scope.page);
     }
 }]);

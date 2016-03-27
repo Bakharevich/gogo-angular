@@ -7,7 +7,7 @@ if (!empty($_REQUEST['p'])) {
 }
 else $page = 1;
 
-$url = $CONFIG['proxy_url'] . urlencode($query) . "&p=" . $page;
+$url = $CONFIG['proxy_url'] . urlencode($query) . "&p=" . $page . "&ip=" . $_SERVER['REMOTE_ADDR'] . "&spravka=" . $_COOKIE['spravka'];
 //echo urldecode($query) . "<br/>";
 //echo $query . "<br/>";
 //echo $url; exit();
@@ -35,26 +35,29 @@ if (!empty($file)) {
 		$codesArr = $xml->xpath('response/error');
 		$code = (string) $codesArr[0]->attributes()[0];
 
-		$urlArr = $xml->xpath('captcha-img-url');
-		$url = (string) $urlArr[0];
+		// show me captcha
+		if ($code == 100) {
+			$urlArr = $xml->xpath('captcha-img-url');
+			$url = (string) $urlArr[0];
 
-		$keyArr = $xml->xpath('captcha-key');
-		$key = (string) $keyArr[0];
+			$keyArr = $xml->xpath('captcha-key');
+			$key = (string) $keyArr[0];
 
-		$statusArr = $xml->xpath('captcha-status');
-		$status = (string) $statusArr[0];
+			$statusArr = $xml->xpath('captcha-status');
+			$status = (string) $statusArr[0];
 
 
-		$result = array(
-			'code' => $code,
-			'captcha-img-url' => $url,
-			'key' => $key,
-			'status' => $status
+			$result = array(
+				'code' => $code,
+				'captcha-img-url' => $url,
+				'key' => $key,
+				'status' => $status
 
-		);
+			);
+		}
 
-		echo "<pre>"; print_r($result);
-		//echo json_encode($result);
+		//echo "<pre>"; print_r($result);
+		echo json_encode($result);
 	}
 	else {
 		$response = $xml->response;

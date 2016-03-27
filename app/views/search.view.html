@@ -117,11 +117,12 @@
         </div>
     </div>
     <div class="col-sm-10 results-block results-block-xs">
-        <div class="col-md-12 text-center loading" ng-show="loadingSearch">
+        <div class="col-xs-12 text-center loading" ng-show="loadingSearch">
             <img src="/img/ajax-loader.gif" />
         </div>
-        <div class="col-md-9" style="padding-left: 0px;" ng-repeat="value in results">
-            <div class="one-result">
+        <div class="col-md-9" style="padding-left: 0px; padding-bottom: 40px;">
+            <div class="one-result" ng-if="!results.code" ng-repeat="value in results.results">
+                Results:
                 <div class="title">
                     <img style="position: absolute; display: block; left: -35px; top: 2px;" class="favicon" width="16" height="16" border="0" ng-src="http://favicon.yandex.net/favicon/{{value.domain[0]}}" onerror="this.src='/images/blank_favicon.gif'">
                     <a href="{{ value.url[0] }}" target="_blank" ng-bind-html="value.title"></a>
@@ -134,45 +135,60 @@
                     <a href="{{ value.url[0] }}" ng-bind="value.url[0] | escape | limitToDots: 50" target="_blank" ></a>
                 </div>
             </div>
+
+            <div ng-show="results.code == 100">
+                <h2>Упс...</h2>
+                <p>Нам очень жаль, но запросы, поступившие с вашего IP-адреса, похожи на автоматические. По этой причине мы вынуждены временно заблокировать доступ к поиску.</p>
+                <p>Чтобы продолжить поиск, пожалуйста, введите символы с картинки в поле ввода и нажмите «Отправить».</p>
+
+                STATUS: {{results.status}}
+
+                <form ng-submit="sendCaptcha()">
+                    <input type="hidden" ng-model="captchaKey" name="key" value="{{results.key}}" />
+
+                    <div class="col-md-6">
+                        <img ng-src="{{results['captcha-img-url']}}" />
+                    </div>
+                    <div class="col-md-6" style="padding-top: 15px;">
+                        <div class="input-group">
+                            <input type="text" name="captcha" ng-model="captchaValue" class="form-control" placeholder="символы слева">
+                          <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default" type="button">Отправить</button>
+                          </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-show="results.code == 15">
+                <h2>Ничего нет</h2>
+                <p>По вашему запросу ничего не нашлось.</p>
+            </div>
         </div>
         <div class="col-md-3">
-            ADS YANDEX
+            <!-- ADS YANDEX -->
         </div>
         <div class="col-md-12" style="padding-left: 0px;">
-            <div paging
-                 page="page"
-                 page-size="20"
-                 total="120"
-                 class="small"
-                 hide-if-empty="false"
-                 paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word)">
-            </div>
-            <!--
-            <nav class="margin-bottom-20">
-                <ul class="pagination margin-top-10">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            -->
+            <div ng-show="!results.code">
+                <div paging
+                     page="page"
+                     page-size="20"
+                     total="120"
+                     class="small"
+                     hide-if-empty="false"
+                     paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word)">
+                </div>
 
-            <div class="results-sort-by">
-                Отсортировано:
-                <a href="javascript://" class="active" ng-click="showDevMsg()">по релевантности</a>
-                <a href="javascript://" ng-click="showDevMsg()">по дате</a>
-            </div>
+                <div class="results-sort-by">
+                    Отсортировано:
+                    <a href="javascript://" class="active" ng-click="showDevMsg()">по релевантности</a>
+                    <a href="javascript://" ng-click="showDevMsg()">по дате</a>
+                </div>
 
-            <div class="results-additional">
-                <p>При поиске отдано предпочтение <b>сайтам из Беларуси</b>. <a href="javascript://" ng-click="showDevMsg()">Поискать в России</a></p>
-                <p class="color-grey">Поискать «бозон хиггса» в других поисковых системах: <a href="javascript://" ng-click="showDevMsg()">Google</a>, <a href="javascript://" ng-click="showDevMsg()">Bing</a></p>
+                <div class="results-additional">
+                    <p>При поиске отдано предпочтение <b>сайтам из Беларуси</b>. <a href="javascript://" ng-click="showDevMsg()">Поискать в России</a></p>
+                    <p class="color-grey">Поискать «бозон хиггса» в других поисковых системах: <a href="javascript://" ng-click="showDevMsg()">Google</a>, <a href="javascript://" ng-click="showDevMsg()">Bing</a></p>
+                </div>
             </div>
         </div>
     </div>
