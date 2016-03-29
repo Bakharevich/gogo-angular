@@ -1,0 +1,4 @@
+<h2>Users template</h2>
+<?php foreach ($data['users'] as $user) : ?>
+	<?= $user ?> - <?= $router->pathFor('users_add', ['id' => $user]) ?><br/>
+<?php endforeach; ?>
