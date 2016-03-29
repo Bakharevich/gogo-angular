@@ -247,13 +247,13 @@ $app->get('/users/me', function (Request $request, Response $response) {
 	if (empty($_SESSION['user_info']['user_id'])) {
 		$res = array(
 			'status' => array(
-				'code' => 403,
+				'code' => 200,
 				'error' => true,
 				'message' => 'You are not authorized'
 			)
 		);
 
-		return $response->withJson($res, 403);
+		return $response->withJson($res, 200);
 	}
 
 	$userId = $_SESSION['user_info']['user_id'];

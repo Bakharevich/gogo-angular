@@ -7,7 +7,11 @@ if (!empty($_REQUEST['p'])) {
 }
 else $page = 1;
 
-$url = $CONFIG['proxy_url'] . urlencode($query) . "&p=" . $page . "&ip=" . $_SERVER['REMOTE_ADDR'] . "&spravka=" . @$_COOKIE['spravka'];
+$url = $CONFIG['proxy_url'] . urlencode($query) . "&p=" . $page .
+												  "&lr=" . @$_REQUEST['region'] .
+												  "&sort=" . @$_REQUEST['sort'] .
+												  "&ip=" . @$_SERVER['REMOTE_ADDR'] .
+												  "&spravka=" . @$_COOKIE['spravka'];
 //echo urldecode($query) . "<br/>";
 //echo $query . "<br/>";
 //echo $url; exit();

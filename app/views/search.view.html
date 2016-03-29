@@ -72,12 +72,12 @@
     <form ng-submit="searchRequest(word, 1)">
         <div class="col-xs-12 col-sm-9" style="padding-left: 0px; padding-right: 0px;">
             <div class="input-group">
-                <input type="text" ng-model="word" class="form-control main_input_search" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default btn-search-results" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
+                <input type="text" ng-model="word_encoded" class="form-control main_input_search" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-search-results" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
             </div>
 
             <div style="font-size: 0.9em;">
@@ -176,18 +176,31 @@
                      total="120"
                      class="small"
                      hide-if-empty="false"
-                     paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word)">
+                     paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word, region, sort)">
                 </div>
 
                 <div class="results-sort-by">
                     Отсортировано:
-                    <a href="javascript://" class="active" ng-click="showDevMsg()">по релевантности</a>
-                    <a href="javascript://" ng-click="showDevMsg()">по дате</a>
+
+                    <a href="javascript://" ng-click="changeSort('rlv')" ng-class="{'active':sort == 'rlv'}">по релевантности</a>
+                    <a href="javascript://" ng-click="changeSort('tm')" ng-class="{'active':sort == 'tm'}">по дате</a>
                 </div>
 
                 <div class="results-additional">
-                    <p>При поиске отдано предпочтение <b>сайтам из Беларуси</b>. <a href="javascript://" ng-click="showDevMsg()">Поискать в России</a></p>
-                    <p class="color-grey">Поискать «бозон хиггса» в других поисковых системах: <a href="javascript://" ng-click="showDevMsg()">Google</a>, <a href="javascript://" ng-click="showDevMsg()">Bing</a></p>
+                    <div ng-show="region == 157">
+                        <p>При поиске отдано предпочтение <b>сайтам из Минска</b>.
+                        <a href="javascript://" ng-click="changeRegion(225)">Поискать в России</a></p>
+                    </div>
+                    <div ng-show="region == 225">
+                        <p>При поиске отдано предпочтение <b>сайтам из России</b>.
+                            <a href="javascript://" ng-click="changeRegion(157)">Поискать в Беларуси</a></p>
+                    </div>
+
+                    <p class="color-grey">
+                        Поискать «{{word}}» в других поисковых системах:
+                        <a href="https://www.google.by/search?q={{word}}" target="_blank">Google</a>,
+                        <a href="http://www.bing.com/search?q={{word}}" target="_blank" ng-click="showDevMsg()">Bing</a>
+                    </p>
                 </div>
             </div>
         </div>

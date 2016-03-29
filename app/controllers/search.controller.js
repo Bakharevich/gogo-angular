@@ -1,23 +1,32 @@
 angular.module("gogo")
 
 .controller('SearchCtrl', ['$scope', '$http', '$routeParams', '$location', '$compile', '$log', 'toastr', function($scope, $http, $routeParams, $location, $compile, $log, toastr) {
-    var word = $routeParams.word;
-    var word_decoded = window.decodeURIComponent(word);
+    $scope.word = $routeParams.word;
+    $scope.word_decoded = window.decodeURIComponent($routeParams.word);
+    $scope.word_encoded = window.encodeURIComponent($routeParams.word);
+
     if ($routeParams.page == null) $scope.page = 1;
-    else $scope.page = $routeParams.page;
+    else $scope.page = parseInt($routeParams.page);
 
-    $scope.word = word_decoded;
+    if ($routeParams.engine == null) $scope.engine = 'yandex';
+    else $scope.engine = $routeParams.engine;
 
+    if ($routeParams.region == null) $scope.region = 149;
+    else $scope.region = $routeParams.region;
+
+    if ($routeParams.sort == null) $scope.sort = 'rlv';
+    else $scope.sort = $routeParams.sort;
+
+    if ($routeParams.engine == null) $scope.engine = 'yandex';
+    else $scope.engine = $routeParams.engine;
+
+    // showing loading animation
     $scope.loadingSearch = true;
 
     // send request
-    /*
-    $http.get('/api/results.php?q=' + word + '&p=' + $scope.page).success(function(data) {
-        $scope.results = data.results;
-    });*/
     $http({
         method: 'GET',
-        url: '/api/results.php?q=' + word + '&p=' + $scope.page
+        url: '/api/results.php?q=' + $scope.word_decoded + '&p=' + $scope.page + '&region=' + $scope.region + '&sort=' + $scope.sort + '&engine=' + $scope.engine
     }).then(function succcessCallback(response) {
         console.log(response.data);
         $scope.results = response.data;
@@ -25,56 +34,38 @@ angular.module("gogo")
         alert("error!");
     });
 
-
-
     // direct premium request
-    $http.get('api/premium_top.php?word=' + word + '&page=' + $scope.page).success(function (data) {
+    $http.get('api/premium_top.php?word=' + $scope.word_decoded + '&page=' + $scope.page).success(function (data) {
         html = $compile(data)($scope);
 
         $('#yandex-premium-top').html(html);
     });
 
     // direct right request
-    $http.get('api/premium_right.php?word=' + word + '&page=' + $scope.page).success(function (data) {
+    $http.get('api/premium_right.php?word=' + $scope.word_decoded + '&page=' + $scope.page).success(function (data) {
         html = $compile(data)($scope);
 
         $('#yandex-premium-right').html(html);
     });
 
+    // turn off animation
     setTimeout(function() {
         $scope.loadingSearch = false;
     }, 40);
 
-
     // paging
-    $scope.DoCtrlPagingAct = function(text, page, pageSize, total, word) {
-        $scope.searchRequest(word, page);
-    };
-
-    // show dev message
-    $scope.showDevMsg = function()
-    {
-        toastr.info(
-            'That function is under construction',
-            'Not working',
-            {closeButton: true}
-        );
-    }
-
-    // send request
-    $scope.searchRequest = function(word, page) {
-        //var word = $scope.word;
-        var word_encoded = window.encodeURIComponent(word);
-        page = parseInt(page);
-
+    $scope.DoCtrlPagingAct = function(text, page, pageSize, total, word, region, sort) {
         $scope.page = page;
 
-        if (word) {
-            $location.path('/search/' + word_encoded + '/' + page);
-        }
-        else {
-            alert('Type the search request');
-        }
+        $scope.searchRequest({});
+    };
+
+    // send request
+    $scope.searchRequest = function(obj) {
+        if (obj.page) page = obj.page;
+        else page = $scope.page;
+
+        $location.path('/search/' + $scope.word_decoded + '/' + page + '/' + $scope.region + '/' + $scope.sort + '/' + 'yandex');
     }
 
     $scope.sendCaptcha = function()
@@ -84,15 +75,28 @@ angular.module("gogo")
             method: 'GET',
             url: '/api/checkcaptcha.php?key=' + $scope.results.key + '&rep=' + $scope.captchaValue
         }).then(function succcessCallback(response) {
-            //console.log(response.data);
-            //$scope.captchaData = response.data;
-
-            //alert('success');
-
             // try search one more time
-            $scope.searchRequest(word_decoded + ' ', $scope.page);
+            //$scope.searchRequest(word_decoded + ' ', $scope.page);
         }, function errorCallback(response) {
             alert("error!");
         });
+    }
+
+    $scope.changeSort = function(sort)
+    {
+        $scope.sort = sort;
+        $scope.page = 1;
+        var obj = {'page' : 1};
+
+        $scope.searchRequest(obj);
+    }
+
+    $scope.changeRegion = function(region)
+    {
+        $scope.region = region;
+        $scope.page = 1;
+        var obj = {'page' : 1};
+
+        $scope.searchRequest(obj);
     }
 }]);

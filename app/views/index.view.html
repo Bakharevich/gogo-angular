@@ -27,7 +27,7 @@
         </ul>
     </div>
 
-    <form ng-submit="searchRequest(word, 1)">
+    <form ng-submit="searchRequest(word, 1, 'by', 'rlv')">
         <div style="max-width: 700px; margin: 0 auto; margin-bottom: 32px;">
             <div class="input-group input-group-lg">
                 <input type="text" ng-model="word" class="form-control main_input_search" id="main_search" auto-focus />
@@ -41,7 +41,7 @@
 
         <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
             <div class="col-sm-6 main-suggestion">
-                Например, <a href="#/search/рестораны в Минске">рестораны в Минске</a>
+                Например, <a href="#/search/рестораны в Минске/1/157/rlv/yandex">рестораны в Минске</a>
             </div>
             <div class="col-sm-6 main-options">
                 <input type="checkbox" name="only-belarus" id="only-belarus" />
