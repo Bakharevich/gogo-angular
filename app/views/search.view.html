@@ -121,18 +121,19 @@
             <img src="/img/ajax-loader.gif" />
         </div>
         <div class="col-md-9" style="padding-left: 0px; padding-bottom: 40px;">
-            <div class="one-result" ng-if="!results.code" ng-repeat="value in results.results">
-                Results:
-                <div class="title">
-                    <img style="position: absolute; display: block; left: -35px; top: 2px;" class="favicon" width="16" height="16" border="0" ng-src="http://favicon.yandex.net/favicon/{{value.domain[0]}}" onerror="this.src='/images/blank_favicon.gif'">
-                    <a href="{{ value.url[0] }}" target="_blank" ng-bind-html="value.title"></a>
-                </div>
-                <div class="description">
-                    <div ng-bind-html="value.headline"></div>
-                    <div ng-bind-html="value.passage"></div>
-                </div>
-                <div class="link">
-                    <a href="{{ value.url[0] }}" ng-bind="value.url[0] | escape | limitToDots: 50" target="_blank" ></a>
+            <div ng-if="!results.code" ng-repeat="value in results.results">
+                <div class="one-result" style="position: relative;">
+                    <div class="title">
+                        <img style="position: absolute; display: block; left: -35px; top: 2px;" class="favicon" width="16" height="16" border="0" ng-src="http://favicon.yandex.net/favicon/{{value.domain[0]}}" onerror="this.src='/images/blank_favicon.gif'">
+                        <a href="{{ value.url[0] }}" target="_blank" ng-bind-html="value.title"></a>
+                    </div>
+                    <div class="description">
+                        <div ng-bind-html="value.headline"></div>
+                        <div ng-bind-html="value.passage"></div>
+                    </div>
+                    <div class="link">
+                        <a href="{{ value.url[0] }}" ng-bind="value.url[0] | escape | limitToDots: 50" target="_blank" ></a>
+                    </div>
                 </div>
             </div>
 
@@ -140,8 +141,6 @@
                 <h2>Упс...</h2>
                 <p>Нам очень жаль, но запросы, поступившие с вашего IP-адреса, похожи на автоматические. По этой причине мы вынуждены временно заблокировать доступ к поиску.</p>
                 <p>Чтобы продолжить поиск, пожалуйста, введите символы с картинки в поле ввода и нажмите «Отправить».</p>
-
-                STATUS: {{results.status}}
 
                 <form ng-submit="sendCaptcha()">
                     <input type="hidden" ng-model="captchaKey" name="key" value="{{results.key}}" />
@@ -167,6 +166,7 @@
         </div>
         <div class="col-md-3">
             <!-- ADS YANDEX -->
+            Yandex
         </div>
         <div class="col-md-12" style="padding-left: 0px;">
             <div ng-show="!results.code">
