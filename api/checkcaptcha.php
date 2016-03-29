@@ -8,7 +8,7 @@ $ch = curl_init();
 
 //echo $url;
 
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Real-Ip: ' . @$_SERVER["REMOTE_ADDR"]));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Cookie: spravka=' . @$_COOKIE['spravka'], 'X-Real-Ip: ' . $_SERVER['REMOTE_ADDR']));
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -18,7 +18,7 @@ $file = curl_exec($ch);
 $info = curl_getinfo($ch);
 curl_close($ch);
 
-echo "<pre>"; print_r($info);
+//echo "<pre>"; print_r($info);
 
 preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $file, $matches);
 
