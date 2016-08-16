@@ -13,11 +13,7 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl: 'app/views/index.view.html',
             controller: 'IndexCtrl'
         }).
-        when('/search/:word', {
-            templateUrl: 'app/views/search.view.html',
-            controller: 'SearchCtrl'
-        }).
-        when('/search/:word/:page/:region/:sort/:engine', {
+        when('/search/', {
             templateUrl: 'app/views/search.view.html',
             controller: 'SearchCtrl'
         }).

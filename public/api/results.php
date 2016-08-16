@@ -1,15 +1,15 @@
 <?php
 require_once 'config.php';
 
-$query = $_REQUEST['q'];
-if (!empty($_REQUEST['p'])) {
-	$page = (int) $_REQUEST['p'];
-}
-else $page = 1;
+$query = $_REQUEST['query'];
+
+$page 	= !empty($_REQUEST['page']) ? $_REQUEST['page'] : '';
+$sort 	= !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
+$region = !empty($_REQUEST['region']) ? $_REQUEST['region'] : '';
 
 $url = $CONFIG['proxy_url'] . urlencode($query) . "&p=" . $page .
-												  "&lr=" . @$_REQUEST['region'] .
-												  "&sort=" . @$_REQUEST['sort'] .
+												  "&lr=" . $region .
+												  "&sort=" . $sort .
 												  "&ip=" . @$_SERVER['REMOTE_ADDR'] .
 												  "&spravka=" . @$_COOKIE['spravka'];
 //echo urldecode($query) . "<br/>";

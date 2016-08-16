@@ -27,10 +27,10 @@
         </ul>
     </div>
 
-    <form ng-submit="searchRequest(word, 1, 'by', 'rlv')">
+    <form ng-submit="searchRequest(request)">
         <div style="max-width: 700px; margin: 0 auto; margin-bottom: 32px;">
             <div class="input-group input-group-lg">
-                <input type="text" ng-model="word" class="form-control main_input_search" id="main_search" auto-focus />
+                <input type="text" ng-model="request.query" class="form-control main_input_search" id="main_search" auto-focus />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default">
                             <span class="glyphicon glyphicon-search"></span>
@@ -41,14 +41,20 @@
 
         <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
             <div class="col-sm-6 main-suggestion">
-                Например, <a href="#/search/рестораны в Минске/1/157/rlv/yandex">рестораны в Минске</a>
+                Например, <a href="/#/search/?query=restaurants">рестораны в Минске</a>
             </div>
             <div class="col-sm-6 main-options">
-                <input type="checkbox" name="only-belarus" id="only-belarus" />
-                <label for="only-belarus" style="font-weight: normal;"> только на сайтах из Беларуси</label>
+                <input type="checkbox" name="domain" value="157" id="domain" ng-model="request.domain" />
+                <label for="domain" style="font-weight: normal;"> только на сайтах из Беларуси</label>
             </div>
         </div>
     </form>
+
+
+</div>
+
+<div class="alert alert-info" ng-if="requestttt">
+    Request: {{ request }}
 </div>
 
 <footer class="main-footer">
