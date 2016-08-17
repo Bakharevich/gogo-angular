@@ -1,11 +1,7 @@
 angular.module("gogo")
 
 .controller('SearchCtrl', ['$scope', '$http', '$routeParams', '$location', '$compile', '$log', 'toastr', 'YandexSearch', function($scope, $http, $routeParams, $location, $compile, $log, toastr, YandexSearch) {
-    if (!$scope.query && $routeParams.query) $scope.query = $routeParams.query;
-
-    //$scope.word = $routeParams.q;
-    //$scope.word_decoded = window.decodeURIComponent($routeParams.word);
-    //$scope.word_encoded = window.encodeURIComponent($routeParams.word);
+    if (!$scope.query && $routeParams.query) $scope.query = decodeURIComponent($routeParams.query);
 
     if ($routeParams.page == null) $scope.page = 1;
     else $scope.page = parseInt($routeParams.page);
@@ -100,7 +96,7 @@ angular.module("gogo")
     $scope.goRequest = function()
     {
         var request = {};
-        request.query = $scope.query;
+        request.query = encodeURIComponent($scope.query);
         request.page = $scope.page;
         request.region = $scope.region;
         request.sort = $scope.sort;
