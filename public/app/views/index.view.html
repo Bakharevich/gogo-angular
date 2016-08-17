@@ -41,10 +41,10 @@
 
         <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
             <div class="col-sm-6 main-suggestion">
-                Например, <a href="/#/search/?query=restaurants">рестораны в Минске</a>
+                Например, <a href="/#/search/?query=что такое форекс">что такое форекс</a>
             </div>
             <div class="col-sm-6 main-options">
-                <input type="checkbox" name="domain" value="157" id="domain" ng-model="request.domain" />
+                <input type="checkbox" name="domain" id="domain" ng-model="request.domain" ng-true-value="'by'" ng-false-value="''" />
                 <label for="domain" style="font-weight: normal;"> только на сайтах из Беларуси</label>
             </div>
         </div>
@@ -53,7 +53,7 @@
 
 </div>
 
-<div class="alert alert-info" ng-if="requestttt">
+<div class="alert alert-info" ng-if="request_">
     Request: {{ request }}
 </div>
 

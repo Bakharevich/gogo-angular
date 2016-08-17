@@ -18,6 +18,10 @@ angular.module("gogo")
     this.setSort = function(sort) {
         request.sort = sort;
     }
+
+    this.setDomain = function(domain) {
+        request.domain = domain;
+    }
     
     this.getRequestUrl = function() {
         return objectToParams(request);

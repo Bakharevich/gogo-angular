@@ -1,7 +1,9 @@
 angular.module("gogo")
 
 .controller('SearchCtrl', ['$scope', '$http', '$routeParams', '$location', '$compile', '$log', 'toastr', 'YandexSearch', function($scope, $http, $routeParams, $location, $compile, $log, toastr, YandexSearch) {
-    if (!$scope.query && $routeParams.query) $scope.query = decodeURIComponent($routeParams.query);
+    if (!$scope.query && $routeParams.query) $scope.query = $routeParams.query;
+    else $scope.query = 'Star Craft II';
+
 
     if ($routeParams.page == null) $scope.page = 1;
     else $scope.page = parseInt($routeParams.page);
@@ -15,6 +17,9 @@ angular.module("gogo")
     if ($routeParams.sort == null) $scope.sort = 'rlv';
     else $scope.sort = $routeParams.sort;
 
+    if ($routeParams.domain == null) $scope.domain = '';
+    else $scope.domain = $routeParams.domain;
+
     // send request
     $scope.searchRequest = function() {
         // showing loading animation
@@ -26,6 +31,7 @@ angular.module("gogo")
         YandexSearch.setPage($scope.page);
         YandexSearch.setRegion($scope.region);
         YandexSearch.setSort($scope.sort);
+        YandexSearch.setDomain($scope.domain);
 
         // send request
         YandexSearch.sendRequest().then(
@@ -40,6 +46,7 @@ angular.module("gogo")
         }, 40);
 
         // direct premium request
+
         $http.get('api/premium_top.php?word=' + $scope.query + '&page=' + $scope.page).success(function (data) {
             html = $compile(data)($scope);
 
@@ -52,12 +59,11 @@ angular.module("gogo")
 
             $('#yandex-premium-right').html(html);
         });
+
     }
 
     // paging
-    $scope.DoCtrlPagingAct = function(text, page) {
-        $scope.page = page;
-
+    $scope.pageChanged = function() {
         $scope.goRequest();
     };
 
@@ -96,10 +102,11 @@ angular.module("gogo")
     $scope.goRequest = function()
     {
         var request = {};
-        request.query = encodeURIComponent($scope.query);
+        request.query = $scope.query;
         request.page = $scope.page;
         request.region = $scope.region;
         request.sort = $scope.sort;
+        request.domain = $scope.domain;
 
         if (request.query) {
             $location.path('/search/').search(request);

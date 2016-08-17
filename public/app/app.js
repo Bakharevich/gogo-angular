@@ -2,9 +2,9 @@ var app = angular.module('gogo', [
     'ngRoute',
     'ngSanitize',
     'rt.encodeuri',
-    'bw.paging',
     'toastr',
-    'ymaps'
+    'ymaps',
+    'ui.bootstrap'
 ]);
 
 app.config(['$routeProvider', function($routeProvider){

@@ -6,6 +6,9 @@ $query = $_REQUEST['query'];
 $page 	= !empty($_REQUEST['page']) ? $_REQUEST['page'] : '';
 $sort 	= !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
 $region = !empty($_REQUEST['region']) ? $_REQUEST['region'] : '';
+$domain = !empty($_REQUEST['domain']) ? $_REQUEST['domain'] : '';
+
+if (!empty($domain)) $query = "domain:by " . $query;
 
 $url = $CONFIG['proxy_url'] . urlencode($query) . "&p=" . $page .
 												  "&lr=" . $region .
@@ -65,13 +68,26 @@ if (!empty($file)) {
 	}
 	else {
 		$response = $xml->response;
-
+		
 		// human results
-		//$foundHumanArr = $xml->xpath('found-human');
-		//$foundHuman = $foundHumanArr[0];
-		//echo "<pre>"; var_dump($foundHuman);
+		$foundHumanArr = $xml->xpath('response/found-human');
+		if (!empty($foundHumanArr[0])) {
+			$result['found_human'] = (string)$foundHumanArr[0];
+		}
+		else {
+			$result['found_human'] = 'ничего не нашлось';
+		}
 
-		/// FOUND HUMAN!!!
+		$foundAllArr = $xml->xpath('response/found[@priority="all"]');
+		if (!empty($foundAllArr)) {
+			$result['found_all'] = (int) $foundAllArr[0];
+
+			if ($result['found_all'] > 200) $result['found_all_limited'] = 100;
+			else $result['found_all_limited'] = $result['found_all'];
+		}
+		else {
+			$result['found_all'] = 0;
+		}
 
 
 		// request id

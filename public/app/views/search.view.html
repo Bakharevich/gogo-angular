@@ -53,13 +53,14 @@
                 </div>
 
                 <div style="font-size: 0.9em;">
-                    <input type="checkbox" /> искать только на белорусских сайтах
+                    <input type="checkbox" ng-model="domain" ng-checked="domain" id="domain" ng-true-value="'by'" ng-false-value="''" ng-change="page = 1; goRequest()" />
+                    <label for="domain" style="font-weight: normal">искать только на белорусских сайтах</label>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 hidden-xs">
                 <img src="img/results_yandex.png" />
                 <div style="font-size: 0.8em;">
-                    Нашлось 492 тыс. ответов
+                    {{ results.found_human }}
                 </div>
             </div>
         </form>
@@ -81,13 +82,14 @@
             </div>
 
             <div style="font-size: 0.9em;">
-                <input type="checkbox" /> искать только на белорусских сайтах
+                <input type="checkbox" ng-model="domain" ng-checked="domain" id="domain-small" ng-true-value="'by'" ng-false-value="''" ng-change="page = 1; goRequest()" />
+                <label for="domain-small" style="font-weight: normal">искать только на белорусских сайтах</label>
             </div>
         </div>
         <div class="col-xs-12 col-sm-3 hidden-xs">
             <img src="img/results_yandex.png" />
             <div style="font-size: 0.8em;">
-                Нашлось 492 тыс. ответов
+                {{ results.found_human }}
             </div>
         </div>
     </form>
@@ -167,18 +169,11 @@
         </div>
         <div class="col-md-3">
             <!-- ADS YANDEX -->
-            Yandex
+            Yandex {{ page }}
         </div>
         <div class="col-md-12" style="padding-left: 0px;">
             <div ng-show="!results.code">
-                <div paging
-                     page="page"
-                     page-size="20"
-                     total="120"
-                     class="small"
-                     hide-if-empty="false"
-                     paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total, word, region, sort)">
-                </div>
+                <ul uib-pagination total-items="100" items-per-page="10" ng-model="page" ng-change="pageChanged()" boundary-links="false" direction-links="false" num-pages="smallnumPages"></ul>
 
                 <div class="results-sort-by">
                     Отсортировано:

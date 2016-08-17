@@ -8,8 +8,6 @@ angular.module("gogo")
         request.sort = 'rlv';
 
         if (request.query) {
-            request.query = encodeURIComponent(request.query);
-
             $location.path('/search/').search(request);
         }
         else {
