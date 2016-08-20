@@ -1,78 +1,97 @@
-<div class="text-right hidden-xs main-settings">
-    <img src="img/main_settings.png" style="" />
-    <span ng-if="user" style="font-size: 0.9em; color: #555;">{{user.email}}</span>
-</div>
-
-<div class="visible-xs padding-bottom-40-xs"></div>
-
-<div class="container" style="">
-    <div class="text-center" style="margin-bottom: 44px;">
-        <img src="img/main_logo.png" srcset="img/main_logo_x2.png" width="208" height="51" />
+<div ng-controller="IndexCtrl">
+    <div class="text-right hidden-xs main-settings">
+        <img src="img/main_settings.png" style="" />
+        <span ng-if="user" style="font-size: 0.9em; color: #555;">{{user.email}}</span>
     </div>
 
-    <div class="text-center" style="margin-bottom: 44px;">
-        <ul class="main_menu">
-            <li>Поиск</li>
-            <li><a href="#/maps/">Карты</a></li>
-            <li><a href="#/translate/">Переводчик</a></li>
-            <li><a href="http://mail.yandex.ru/for/gogo.by" target="_blank" rel="nofollow">Почта</a></li>
-            <!--
-            <li class="highlight" ng-if="!user">
-                <a href="#/signin">Войти</a> / <a href="#/signup">Регистрация</a>
-            </li>
-            <li class="highlight" ng-if="user">
-                <a href="#/signout">Выйти</a>
-            </li>
-            -->
-        </ul>
+    <div class="visible-xs padding-bottom-40-xs"></div>
+
+    <div class="container" style="">
+        <div class="text-center" style="margin-bottom: 44px;">
+            <img src="img/main_logo.png" srcset="img/main_logo_x2.png" width="208" height="51" />
+        </div>
+
+        <div class="text-center" style="margin-bottom: 44px;">
+            <ul class="main_menu">
+                <li>Поиск</li>
+                <li><a href="#/maps/">Карты</a></li>
+                <li><a href="#/translate/">Переводчик</a></li>
+                <li><a href="http://mail.yandex.ru/for/gogo.by" target="_blank" rel="nofollow">Почта</a></li>
+                <!--
+                <li class="highlight" ng-if="!user">
+                    <a href="#/signin">Войти</a> / <a href="#/signup">Регистрация</a>
+                </li>
+                <li class="highlight" ng-if="user">
+                    <a href="#/signout">Выйти</a>
+                </li>
+                -->
+            </ul>
+        </div>
+
+        <script type="text/ng-template" id="customPopupTemplate.html">
+            <div class="custom-popup-wrapper"
+                 ng-style="{top: position().top+'px', left: position().left+'px'}"
+                 style="display: block;"
+                 ng-show="isOpen() && !moveInProgress"
+                 aria-hidden="{{!isOpen()}}">
+                <p class="message">select location from drop down.</p>
+
+                <ul class="dropdown-menu" role="listbox">
+                    <li class="uib-typeahead-match" ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                        ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                        <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+                    </li>
+                </ul>
+            </div>
+        </script>
+
+        <form ng-submit="searchRequest(request)">
+            <div style="max-width: 700px; margin: 0 auto; margin-bottom: 32px;">
+                <div class="input-group input-group-lg">
+                    <input type="text" ng-model="request.query" class="form-control main_input_search" id="main_search" auto-focus autocomplete="off"  uib-typeahead="address for address in getSuggestion($viewValue)" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                </div>
+            </div>
+
+            <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
+                <div class="col-sm-6 main-suggestion">
+                    Например, <a href="/#/search/?query=что такое форекс">что такое форекс</a>
+                </div>
+                <div class="col-sm-6 main-options">
+                    <input type="checkbox" name="domain" id="domain" ng-model="request.domain" ng-true-value="'by'" ng-false-value="''" />
+                    <label for="domain" style="font-weight: normal;"> только на сайтах из Беларуси</label>
+                </div>
+            </div>
+        </form>
+
+
     </div>
 
-    <form ng-submit="searchRequest(request)">
-        <div style="max-width: 700px; margin: 0 auto; margin-bottom: 32px;">
-            <div class="input-group input-group-lg">
-                <input type="text" ng-model="request.query" class="form-control main_input_search" id="main_search" auto-focus />
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-            </div>
-        </div>
-
-        <div class="text-center" style="max-width: 700px; margin: 0 auto; color: #6d6d6d;">
-            <div class="col-sm-6 main-suggestion">
-                Например, <a href="/#/search/?query=что такое форекс">что такое форекс</a>
-            </div>
-            <div class="col-sm-6 main-options">
-                <input type="checkbox" name="domain" id="domain" ng-model="request.domain" ng-true-value="'by'" ng-false-value="''" />
-                <label for="domain" style="font-weight: normal;"> только на сайтах из Беларуси</label>
-            </div>
-        </div>
-    </form>
-
-
-</div>
-
-<div class="alert alert-info" ng-if="request_">
-    Request: {{ request }}
-</div>
-
-<footer class="main-footer">
-    <div style="margin: 0 auto; max-width: 950px;">
-        <div class="col-sm-4 text-center-xs links">
-            &copy; GoGo.by
-            <a href="#/contacts">Контакты</a>
-            <a href="http://twitter.com/gogo_by" target="_blank">Твиттер</a>
-            <a href="http://vk.com/gogoby" target="_blank">вКонтакте</a>
-        </div>
-        <div class="col-sm-4 text-center text-center-xs langs">
-            Язык:
-            <span>русский</span>,
-            <a href="#/" onclick="alert('Яшчэ не перакладзена...');">беларуский</a>
-            (<a href="#/">или &laquo;белорусский?&raquo;</a>)
-        </div>
-        <div class="col-sm-4 producer text-right text-center-xs">
-            Дизайн - <a href="http://skrotskystudio.by/" target="_blank" rel="nofollow">Студия Вадима Скротского</a>
-        </div>
+    <div class="alert alert-info" ng-if="request.query">
+        Request: {{ request }}
     </div>
-</footer>
+
+    <footer class="main-footer">
+        <div style="margin: 0 auto; max-width: 950px;">
+            <div class="col-sm-4 text-center-xs links">
+                &copy; GoGo.by
+                <a href="#/contacts">Контакты</a>
+                <a href="http://twitter.com/gogo_by" target="_blank">Твиттер</a>
+                <a href="http://vk.com/gogoby" target="_blank">вКонтакте</a>
+            </div>
+            <div class="col-sm-4 text-center text-center-xs langs">
+                Язык:
+                <span>русский</span>,
+                <a href="#/" onclick="alert('Яшчэ не перакладзена...');">беларуский</a>
+                (<a href="#/">или &laquo;белорусский?&raquo;</a>)
+            </div>
+            <div class="col-sm-4 producer text-right text-center-xs">
+                Дизайн - <a href="http://skrotskystudio.by/" target="_blank" rel="nofollow">Студия Вадима Скротского</a>
+            </div>
+        </div>
+    </footer>
+</div>

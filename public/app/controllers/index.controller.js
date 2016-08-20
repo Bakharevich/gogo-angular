@@ -1,6 +1,6 @@
 angular.module("gogo")
 
-.controller('IndexCtrl', ['$scope', '$http', '$routeParams', '$location', '$sce', 'toastr', 'Global', function($scope, $http, $routeParams, $location, $sce, toastr, Global) {
+.controller('IndexCtrl', ['$scope', '$http', '$routeParams', '$location', '$sce', 'toastr',  function($scope, $http, $routeParams, $location, $sce, toastr) {
     // send request
     $scope.searchRequest = function(request) {
         request.page = 1;
@@ -31,4 +31,18 @@ angular.module("gogo")
         });
         */
     }
+
+
+    $scope.getSuggestion = function(val) {
+        return $http.get('/api/suggest.php', {
+            params: {
+                query: val
+            }
+        }).then(function(response){
+            return response.data.results.map(function(item){
+                return item;
+            });
+        });
+    }
+
 }]);
