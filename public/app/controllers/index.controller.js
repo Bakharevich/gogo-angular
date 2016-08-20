@@ -15,6 +15,10 @@ angular.module("gogo")
         }
     }
 
+    $scope.onSelect = function($item, $model, $callback, request) {
+        $scope.searchRequest(request);
+    }
+
     // get info
     if (!$scope.user) {
         /*

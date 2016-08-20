@@ -44,9 +44,14 @@
         <form ng-submit="page = 1; goRequest()">
             <div class="col-xs-12 col-sm-9" style="padding-left: 0px; padding-right: 0px;">
                 <div class="input-group">
-                    <input type="text" ng-model="query" class="form-control main_input_search" autocomplete="off"  uib-typeahead="address for address in getSuggestion($viewValue)" />
+                    <input type="text" ng-model="query" class="form-control main_input_search" autocomplete="off"
+                           uib-typeahead="address for address in getSuggestion($viewValue)"
+                           typeahead-focus-first="false"
+                           typeahead-editable="true"
+                           typeahead-on-select="onSelect($item, $model, $label, request)"
+                            />
                         <span class="input-group-btn">
-                            <button class="btn btn-default btn-search-results" type="button">
+                            <button type="submit" class="btn btn-default btn-search-results">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
@@ -73,9 +78,12 @@
     <form ng-submit="page = 1; goRequest()">
         <div class="col-xs-12 col-sm-9" style="padding-left: 0px; padding-right: 0px;">
             <div class="input-group">
-                <input type="text" ng-model="query" class="form-control main_input_search" />
+                <input type="text" ng-model="query" class="form-control main_input_search" autocomplete="off"
+                       uib-typeahead="address for address in getSuggestion($viewValue)"
+                       typeahead-editable="false"
+                       typeahead-on-select="onSelect($item, $model, $label, request)"  />
                 <span class="input-group-btn">
-                    <button class="btn btn-default btn-search-results" type="button">
+                    <button type="submit" class="btn btn-default btn-search-results">
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </span>

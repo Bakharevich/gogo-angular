@@ -45,10 +45,15 @@
             </div>
         </script>
 
-        <form ng-submit="searchRequest(request)">
+        <form ng-submit="searchRequest(request)" id="search_form">
             <div style="max-width: 700px; margin: 0 auto; margin-bottom: 32px;">
                 <div class="input-group input-group-lg">
-                    <input type="text" ng-model="request.query" class="form-control main_input_search" id="main_search" auto-focus autocomplete="off"  uib-typeahead="address for address in getSuggestion($viewValue)" />
+                    <input type="text" class="form-control main_input_search" id="main_search" auto-focus autocomplete="off"
+                           ng-model="request.query"
+                           uib-typeahead="address for address in getSuggestion($viewValue)"
+                           typeahead-focus-first="false"
+                           typeahead-editable="true"
+                           typeahead-on-select="onSelect($item, $model, $label, request)" />
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">
                                 <span class="glyphicon glyphicon-search"></span>
