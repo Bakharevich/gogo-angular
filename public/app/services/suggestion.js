@@ -1,10 +1,17 @@
 angular.module("gogo")
 
-.service('Global', function($http) {
+.service('Suggestion', function($http) {
+    var query = '';
+    
+    this.setQuery = function(q)
+    {
+        query = q;
+    }
+    
     this.getSuggestion = function(val) {
         return $http.get('/api/suggest.php', {
             params: {
-                query: val
+                query: query
             }
         }).then(function(response){
             return response.data.results.map(function(item){
@@ -12,4 +19,6 @@ angular.module("gogo")
             });
         });
     }
+
+    this.test
 });
