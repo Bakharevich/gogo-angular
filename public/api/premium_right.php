@@ -9,7 +9,7 @@
 				favicon: true,
 				no_sitelinks: false,
 				sitelinks_color: "0000CC",
-				title_font_size: 2.0,
+				title_font_size: 1.0,
 				font_size: 1,
 				site_bg_color: "FFFFFF",
 				title_color: "0055cc",
