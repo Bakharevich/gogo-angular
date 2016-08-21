@@ -132,6 +132,8 @@
         </div>
 
         <div class="col-md-9" style="padding-left: 0px; padding-bottom: 40px;">
+            <div ng-if="!results.code" id="yandex-premium-top"></div>
+
             <div ng-if="!results.code" ng-repeat="value in results.results">
                 <div class="one-result" style="position: relative;">
                     <div class="title">
@@ -177,7 +179,7 @@
         </div>
         <div class="col-md-3">
             <!-- ADS YANDEX -->
-            Yandex {{ page }}
+            <div id="yandex-premium-right"></div>
         </div>
         <div class="col-md-12" style="padding-left: 0px;">
             <div ng-show="!results.code">
