@@ -10,7 +10,7 @@
 				no_sitelinks: false,
 				sitelinks_color: "0000CC",
 				title_font_size: 3,
-				font_size: 1,
+				font_size: 0.9,
 				site_bg_color: "FFFFFF",
 				title_color: "0000CC",
 				text_color: "000000",
