@@ -132,7 +132,19 @@
         </div>
 
         <div class="col-md-9" style="padding-left: 0px; padding-bottom: 40px;">
-            <div ng-if="!results.code" id="yandex-premium-top"></div>
+
+            <div ng-if="!results.code" id="yandex-premium-top" style="margin-bottom: 20px;"></div>
+
+            <style>
+                .yap-yandex_premium_56478-vertical .yap-layout__inner {
+                    overflow: hidden !important;
+                    padding-left: 0 !important;
+                    width: auto !important;
+                }
+                .yap-layout__content {
+                    margin-bottom: 0px;
+                }
+            </style>
 
             <div ng-if="!results.code" ng-repeat="value in results.results">
                 <div class="one-result" style="position: relative;">
@@ -180,6 +192,14 @@
         <div class="col-md-3">
             <!-- ADS YANDEX -->
             <div id="yandex-premium-right"></div>
+
+            <style>
+            .yap-yandex_direct_56478-vertical .yap-layout__inner {
+                overflow: hidden !important;
+                padding-left: 0em !important;
+                width: auto !important;
+            }
+            </style>
         </div>
         <div class="col-md-12" style="padding-left: 0px;">
             <div ng-show="!results.code">
