@@ -35,14 +35,17 @@
 
                 <textarea ng-model="phrase" cols="20" rows="7" class="form-control" style="height: 200px;"></textarea>
 
-                <div style="margin-top: 10px;">
-                    <div class="col-sm-6 text-left" style="padding-left: 0px;">
+                <div style="margin-top: 10px; margin-bottom: 20px;">
+                    <div class="col-xs-6 text-left" style="padding-left: 0px;">
                         <input class="btn btn-primary" type="submit" value="Перевести">
                     </div>
-                    <div class="col-sm-6 text-right" style="padding-right: 0px;">
+                    <div class="col-xs-6 text-right" style="padding-right: 0px;">
                         <button type="button" class="btn btn-default" ng-click="phrase = ''">Очистить</button>
                     </div>
                 </div>
+
+                <div class="clearfix"></div>
+                <br/>
             </div>
             <div class="col-md-6">
                 <select ng-model="to" name="to" ng-init="to = to || 'ru'" ng-change="translate()" style="margin-bottom: 10px;">
