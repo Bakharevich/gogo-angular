@@ -153,3 +153,18 @@ A {
         padding-left: 15px;
     }
 }
+
+/* Footer */
+.results-footer {
+    padding: 20px 0px 20px 0px;
+    font-size: 0.75em;
+    color: #808080;
+    font-family: Verdana, Geneva, sans-serif;
+}
+.results-footer A {
+    color: #808080;
+    margin-left: 10px;
+}
+.results-footer .links A {
+    margin-left: 10px;
+}
