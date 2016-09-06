@@ -2,8 +2,7 @@ angular.module("gogo")
 
 .controller('SearchCtrl', ['$scope', '$http', '$routeParams', '$location', '$compile', '$log', 'toastr', 'YandexSearch', function($scope, $http, $routeParams, $location, $compile, $log, toastr, YandexSearch) {
     if (!$scope.query && $routeParams.query) $scope.query = $routeParams.query;
-    else $scope.query = 'Star Craft II';
-
+    else $scope.query = '';
 
     if ($routeParams.page == null) $scope.page = 1;
     else $scope.page = parseInt($routeParams.page);
