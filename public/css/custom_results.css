@@ -34,10 +34,31 @@ A {
     margin-bottom: 25px;
 }
 
+/* Left */
+.left-item A {
+    color: #5c5c5c !important;
+}
+.left-item SPAN {
+    color: #5c5c5c !important;
+}
+.left-item A.active {
+    color: #000 !important;
+}
+.left-item SPAN.active {
+    color: #d44b23 !important;
+    /* style="color: #545454;" */
+}
+
 /* Links */
 .title A {
     color: #0055cc;
     font-size: 1.2em;
+}
+.title A:hover {
+    color: #d93600;
+}
+.title A:visited {
+    color: #996699;
 }
 .link {
     margin-top: 2px;
@@ -45,6 +66,9 @@ A {
 .link A {
     color: #338800;
     text-decoration: none;
+}
+.link A:hover {
+    color: #3fa800;
 }
 .link A:hover {
     text-decoration: underline;

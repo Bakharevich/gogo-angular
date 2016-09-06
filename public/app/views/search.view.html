@@ -113,14 +113,14 @@
         <div class="hidden-xs" style="margin-bottom: 30px;"></div>
         <div class="row">
             <div class="col-sm-12 col-xs-6 text-center left-item left-item-sm">
-                <a href="javascript://" class="no-underline" ng-click="showDevMsg()">
-                    <span class="glyphicon glyphicon-globe icon-size icon-size-xs" style="color: #545454;"></span><br/>
+                <a href="javascript://" class="no-underline" ng-click="showDevMsg()" ng-class="{active: query != ''}">
+                    <span class="glyphicon glyphicon-globe icon-size icon-size-xs" ng-class="{active: query != ''}"></span><br/>
                     Весь Интернет
                 </a>
             </div>
 
             <div class="col-sm-12 col-xs-6 text-center left-item left-item-sm">
-                <span class="glyphicon glyphicon-film icon-size icon-size-xs" style=" color: #545454;"></span>
+                <span class="glyphicon glyphicon-film icon-size icon-size-xs"></span>
                 <br/>
                 <a href="javascript://" class="no-underline" ng-click="showDevMsg()">Торренты</a>
             </div>
