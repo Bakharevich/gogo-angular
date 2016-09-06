@@ -84,3 +84,11 @@ FOOTER .producer, FOOTER .producer A {
 .main-footer .langs SPAN {
     color: #000;
 }
+
+/* Themes */
+.main-themes .active {
+    border: 1px solid #d93600;
+}
+.main-themes IMG {
+    cursor: pointer;
+}

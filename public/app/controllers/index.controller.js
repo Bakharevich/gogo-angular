@@ -39,6 +39,15 @@ angular.module("gogo")
         */
     }
 
+    $scope.themes = [
+        [ 1, 'img/themes/01.jpg', 'Стандартная' ],
+        [ 2, 'img/themes/02.jpg', 'Дерево' ],
+        [ 3, 'img/themes/03.jpg', 'Полотно' ],
+        [ 4, 'img/themes/04.jpg', 'Материал' ],
+        [ 5, 'img/themes/05.jpg', 'Квартира' ],
+        [ 6, 'img/themes/06.jpg', 'Жыве Беларусь!' ],
+    ];
+
 
     $scope.getSuggestion = function(val) {
         return $http.get('/api/suggest.php', {
@@ -52,7 +61,14 @@ angular.module("gogo")
         });
     }
 
+    $scope.setTheme = function(themeId) {
+        $scope.themeSelected = themeId;
+    }
+
+    $scope.isThemeSelected = function(themeId) {
+        return $scope.themeSelected === themeId;
+    }
+
     //$('body').css('background-color', '#999');
     $('body').css('background-image', 'url(/img/main_bg.png)');
-
 }]);

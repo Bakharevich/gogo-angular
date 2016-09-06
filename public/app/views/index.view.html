@@ -1,6 +1,6 @@
-<div ng-controller="IndexCtrl">
+<div>
     <div class="text-right hidden-xs main-settings">
-        <img src="img/main_settings.png" style="" />
+        <img src="img/main_settings.png" style="" data-toggle="modal" data-target="#chooseBackground" />
         <span ng-if="user" style="font-size: 0.9em; color: #555;">{{user.email}}</span>
     </div>
 
@@ -99,4 +99,29 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal fade" id="chooseBackground" tabindex="-1" role="dialog" aria-labelledby="chooseBackgroundLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Настройки</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>Темы оформления:</h5>
+
+                    <div class="row main-themes">
+                        <div class="col-sm-4 text-center" ng-repeat="theme in themes">
+                            <img ng-src="{{ theme[1] }}" ngSrc="img/themes/01.jpg" class="img-responsive img-thumbnail" ng-class="{active: isThemeSelected(theme[0])}" ng-click="setTheme(theme[0])" />
+                            <p>{{ theme[2] }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
