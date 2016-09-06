@@ -1,5 +1,5 @@
 BODY {
-    background: url("../img/main_bg.png");
+    background: url("/img/main_bg.png");
     background-position: top;
     background-repeat: repeat-x;
     background-color: rgb(240, 240, 240);

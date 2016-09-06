@@ -52,4 +52,7 @@ angular.module("gogo")
         });
     }
 
+    //$('body').css('background-color', '#999');
+    $('body').css('background-image', 'url(/img/main_bg.png)');
+
 }]);

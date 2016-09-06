@@ -138,5 +138,12 @@ angular.module("gogo")
     // make request
     $scope.searchRequest();
 
+    // set title
     $rootScope.title = $scope.query + ' - GoGo.by';
+
+    // change background
+    /*background: #f2f2f2;*/
+
+    $('body').css('background-color', '#f2f2f2');
+    $('body').css('background-image', 'none');
 }]);
