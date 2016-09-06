@@ -1,6 +1,6 @@
 angular.module("gogo")
 
-.controller('IndexCtrl', ['$scope', '$http', '$routeParams', '$location', '$sce', 'toastr',  function($scope, $http, $routeParams, $location, $sce, toastr) {
+.controller('IndexCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', '$sce', 'toastr',  function($rootScope, $scope, $http, $routeParams, $location, $sce, toastr) {
     // send request
     $scope.searchRequest = function(request) {
         request.page = 1;
@@ -18,6 +18,9 @@ angular.module("gogo")
     $scope.onSelect = function($item, $model, $callback, request) {
         $scope.searchRequest(request);
     }
+
+    $rootScope.title = "GoGo.by - поисковая система Беларуси"
+
 
     // get info
     if (!$scope.user) {

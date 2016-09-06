@@ -1,6 +1,6 @@
 angular.module("gogo")
 
-.controller('MapsCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('MapsCtrl', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
     //создаем массив координат и данных для меток и балунов
     $scope.markers = [
@@ -28,4 +28,6 @@ angular.module("gogo")
 
             });
     }
+
+    $rootScope.title = 'Карта';
 }]);

@@ -1,6 +1,6 @@
 angular.module("gogo")
 
-.controller('SearchCtrl', ['$scope', '$http', '$routeParams', '$location', '$compile', '$log', 'toastr', 'YandexSearch', function($scope, $http, $routeParams, $location, $compile, $log, toastr, YandexSearch) {
+.controller('SearchCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', '$compile', '$log', 'toastr', 'YandexSearch', function($rootScope, $scope, $http, $routeParams, $location, $compile, $log, toastr, YandexSearch) {
     if (!$scope.query && $routeParams.query) $scope.query = $routeParams.query;
     else $scope.query = '';
 
@@ -137,4 +137,6 @@ angular.module("gogo")
 
     // make request
     $scope.searchRequest();
+
+    $rootScope.title = $scope.query + ' - GoGo.by';
 }]);

@@ -1,6 +1,6 @@
 angular.module("gogo")
 
-.controller('TranslateCtrl', ['$scope', '$http', '$routeParams', '$location', '$compile', '$log', function($scope, $http, $routeParams, $location, $compile, $log) {
+.controller('TranslateCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', '$compile', '$log', function($rootScope, $scope, $http, $routeParams, $location, $compile, $log) {
     var word = $routeParams.word;
     var word_decoded = window.decodeURIComponent(word);
     $scope.word = word_decoded;
@@ -64,4 +64,6 @@ angular.module("gogo")
 
             });
     }
+
+    $rootScope.title = 'Переводчик';
 }]);
