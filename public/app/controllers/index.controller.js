@@ -50,7 +50,7 @@ angular.module("gogo")
         [ 3, 'img/themes/3/bg-popup-choose-theme.jpg', 'Полотно' ],
         [ 4, 'img/themes/4/bg-popup-choose-theme.jpg', 'Материал' ],
         [ 5, 'img/themes/5/bg-popup-choose-theme.jpg', 'Квартира' ],
-        [ 6, 'img/themes/6/bg-popup-choose-theme.jpg', 'Жыве Беларусь!' ],
+        [ 6, 'img/themes/6/bg-popup-choose-theme.jpg', 'Историческая' ],
     ];
 
     $scope.onSelect = function($item, $model, $callback, request) {
