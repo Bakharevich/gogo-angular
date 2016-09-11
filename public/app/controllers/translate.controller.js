@@ -19,6 +19,9 @@ angular.module("gogo")
 
     console.log($scope.langs);
 
+    $rootScope.themeId = 1;
+    $scope.themeId = 1;
+
     // send request
     $scope.translate = function() {
         var from = $scope.from;

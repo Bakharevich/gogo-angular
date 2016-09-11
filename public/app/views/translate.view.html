@@ -1,11 +1,11 @@
 <div class="text-right hidden-xs main-settings">
-    <img src="img/main_settings.png" style="" />
+    <span class="glyphicon glyphicon-cog settings" data-toggle="modal" data-target="#chooseBackground"></span>
     <span ng-if="user" style="font-size: 0.9em; color: #555;">{{user.email}}</span>
 </div>
 
 <div class="container">
     <div class="text-center" style="margin-bottom: 44px;">
-        <img src="img/main_logo.png" srcset="img/themes/01/logo.png" width="208" height="51" ng-srcset="srcLogo" />
+        <img src="img/main_logo.png" srcset="img/themes/1/logo.png" width="208" height="51" ng-srcset="{{ srcLogo }}" />
     </div>
 
     <div class="visible-xs padding-bottom-40-xs"></div>
