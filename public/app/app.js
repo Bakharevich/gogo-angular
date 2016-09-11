@@ -1,6 +1,7 @@
 var app = angular.module('gogo', [
     'ngRoute',
     'ngSanitize',
+    'ngCookies',
     'rt.encodeuri',
     'toastr',
     'ymaps',
@@ -68,6 +69,7 @@ app.controller('MainCtrl', ['$scope','$http', 'Global', function($scope, $http, 
 }]);
 
 app.run(function($rootScope) {
+
     $rootScope.getUser = function()
     {
         //alert('Rootscope get user');

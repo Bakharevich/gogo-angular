@@ -1,6 +1,7 @@
 angular.module("gogo")
 
-.controller('IndexCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', '$sce', 'toastr',  function($rootScope, $scope, $http, $routeParams, $location, $sce, toastr) {
+.controller('IndexCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$cookies', '$location', '$sce', 'toastr',
+                  function($rootScope, $scope, $http, $routeParams, $cookies, $location, $sce, toastr) {
     // send request
     $scope.searchRequest = function(request) {
         request.page = 1;
@@ -15,11 +16,15 @@ angular.module("gogo")
         }
     }
 
-    $scope.onSelect = function($item, $model, $callback, request) {
-        $scope.searchRequest(request);
+    if ($cookies.get('themeId')) {
+        $scope.themeId = $cookies.get('themeId');
+    }
+    else {
+        $scope.themeId = 1;
     }
 
     $rootScope.title = "GoGo.by - поисковая система Беларуси"
+    $rootScope.themeId = $scope.themeId;
 
 
     // get info
@@ -40,14 +45,17 @@ angular.module("gogo")
     }
 
     $scope.themes = [
-        [ 1, 'img/themes/01.jpg', 'Стандартная' ],
-        [ 2, 'img/themes/02.jpg', 'Дерево' ],
-        [ 3, 'img/themes/03.jpg', 'Полотно' ],
-        [ 4, 'img/themes/04.jpg', 'Материал' ],
-        [ 5, 'img/themes/05.jpg', 'Квартира' ],
-        [ 6, 'img/themes/06.jpg', 'Жыве Беларусь!' ],
+        [ 1, 'img/themes/1/bg-popup-choose-theme.jpg', 'Стандартная' ],
+        [ 2, 'img/themes/2/bg-popup-choose-theme.jpg', 'Дерево' ],
+        [ 3, 'img/themes/3/bg-popup-choose-theme.jpg', 'Полотно' ],
+        [ 4, 'img/themes/4/bg-popup-choose-theme.jpg', 'Материал' ],
+        [ 5, 'img/themes/5/bg-popup-choose-theme.jpg', 'Квартира' ],
+        [ 6, 'img/themes/6/bg-popup-choose-theme.jpg', 'Жыве Беларусь!' ],
     ];
 
+    $scope.onSelect = function($item, $model, $callback, request) {
+        $scope.searchRequest(request);
+    }
 
     $scope.getSuggestion = function(val) {
         return $http.get('/api/suggest.php', {
@@ -59,9 +67,36 @@ angular.module("gogo")
                 return item;
             });
         });
-    }
+    };
+
+    $scope.saveTheme = function(themeId) {
+        if (!themeId) return false;
+
+        var now = new Date(),
+            exp = new Date(now.getFullYear(), now.getMonth()+2, now.getDate());
+
+        $cookies.put('themeId', themeId, {'expires': exp});
+
+        $scope.themeId = themeId;
+        $rootScope.themeId = $scope.themeId;
+
+        $scope.setTheme(themeId);
+
+        $('#chooseBackground').modal('hide');
+
+        toastr.success(
+            'Новая тема оформления установлена',
+            '',
+            {closeButton: true}
+        );
+    };
 
     $scope.setTheme = function(themeId) {
+        $scope.srcLogo = "img/themes/" + $scope.themeId + "/logo.png";
+    }
+    $scope.setTheme($scope.themeId);
+
+    $scope.selectTheme = function(themeId) {
         $scope.themeSelected = themeId;
     }
 
@@ -70,5 +105,5 @@ angular.module("gogo")
     }
 
     //$('body').css('background-color', '#999');
-    $('body').css('background-image', 'url(/img/main_bg.png)');
+    //$('body').css('background-image', 'url(/img/main_bg.png)');
 }]);

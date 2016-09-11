@@ -1,15 +1,18 @@
 BODY {
-    background: url("/img/main_bg.png");
+    background: url("/img/themes/1/main_bg.png");
     background-position: top;
     background-repeat: repeat-x;
     background-color: rgb(240, 240, 240);
+
 }
 
 /* Footer changes */
 HTML {
     position: relative;
+
     min-height: 100%;
 }
 BODY {
     margin-bottom: 70px;
+    height: 100%;
 }

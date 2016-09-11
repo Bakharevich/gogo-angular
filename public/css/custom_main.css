@@ -9,12 +9,28 @@ BODY {
     margin-bottom: 65px;
     margin-right: 27px;
 }
+.settings {
+    background: -webkit-linear-gradient(#262626, #bbbbbb);
+    color: #5e5e5e;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2em;
+}
+.settings:HOVER {
+    cursor: pointer;
+    background: -webkit-linear-gradient(#9f0c00, #ff6c4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #e83e00;
 
-/* Main menu */
-UL.main_menu {
 
 }
-UL.main_menu LI {
+
+/* Main menu */
+UL.main-menu {
+
+}
+UL.main-menu LI {
     font-size: 0.85em;
     display: inline;
     list-style-type: none;
@@ -23,7 +39,7 @@ UL.main_menu LI {
     font-weight: bold;
     color: #000;
 }
-UL.main_menu LI A {
+UL.main-menu LI A {
     text-transform: uppercase;
     font-weight: normal;
 }
@@ -34,7 +50,7 @@ A {
 A:hover {
     color: #bd381e;
 }
-UL.main_menu LI.highlight A {
+UL.main-menu LI.highlight A {
     color: #43810b;
 }
 
@@ -67,9 +83,7 @@ FOOTER A {
 FOOTER A:hover, FOOTER A:focus {
     color: #262626;
 }
-FOOTER .producer, FOOTER .producer A {
-    color: #a4a4a4;
-}
+
 /* Make footer fixed */
 .main-footer {
     position: absolute;
@@ -86,9 +100,3 @@ FOOTER .producer, FOOTER .producer A {
 }
 
 /* Themes */
-.main-themes .active {
-    border: 1px solid #d93600;
-}
-.main-themes IMG {
-    cursor: pointer;
-}

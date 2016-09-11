@@ -17,15 +17,17 @@
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/custom_main.css" rel="stylesheet">
     <link href="css/custom_results.css" rel="stylesheet">
+    <link href="css/custom_themes.css" rel="stylesheet">
 </head>
 
-<body>
-    <div ng-view ng-init="getUser()"></div>
+<body class="main-bg" ng-class="['main-bg-theme-' + themeId]">
+    <div class="main-bg-light-switchedoff" ng-view ng-init="getUser()"></div>
 
     <script src="app/functions/objectToParams.js"></script>
     <script src="app/functions/objectEncode.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/angular-encode-uri/dist/angular-encode-uri.min.js"></script>
     <script src="bower_components/angular-toastr/dist/angular-toastr.min.js"></script>
