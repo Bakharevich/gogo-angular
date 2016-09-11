@@ -8,6 +8,14 @@
 .main-bg-light {
     background: url(/img/light_gr.png) left top repeat-x;
 }
+
+/* THEME 0 - SEARCH RESULTS */
+.main-bg-theme-0 {
+    background-image: none !important;
+    background-color: #f2f2f2 !important;
+}
+
+/* THEME 1 */
 .main-bg-theme-1 {
     background: #333 !important;
     background-image: url(/img/themes/1/main_bg.png) !important;

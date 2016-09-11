@@ -141,9 +141,10 @@ angular.module("gogo")
     // set title
     $rootScope.title = $scope.query + ' - GoGo.by';
 
+    // set theme to 0
+    $scope.themeId = 0;
+    $rootScope.themeId = 0;
+
     // change background
     /*background: #f2f2f2;*/
-
-    $('body').css('background-color', '#f2f2f2');
-    $('body').css('background-image', 'none');
 }]);
