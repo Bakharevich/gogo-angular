@@ -8,7 +8,8 @@
     <meta name="author" content="Ilya Bakharevich">
     <link rel="icon" href="favicon.ico">
     <title ng-bind="title">GoGo.by - поисковая система Беларуси</title>
-
+    <link href="/css/gogo.min.css" rel="stylesheet">
+    <!--
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/angular-toastr/dist/angular-toastr.min.css" rel="stylesheet">
     <link href="css/resolutions.css" rel="stylesheet">
@@ -17,13 +18,20 @@
     <link href="css/custom_main.css" rel="stylesheet">
     <link href="css/custom_results.css" rel="stylesheet">
     <link href="css/custom_themes.css" rel="stylesheet">
+    -->
+
 </head>
 
 <body class="main-bg" ng-class="['main-bg-theme-' + themeId]">
     <div class="main-bg-light-switchedoff" ng-view ng-init="getUser()"></div>
 
-    <script src="app/functions/objectToParams.js"></script>
-    <script src="app/functions/objectEncode.js"></script>
+    <script src="/app/gogo.min.js"></script>
+    <!--
+    <script src="app/vendor.min.js"></script>
+    <script src="app/app.min.js"></script>
+    -->
+
+    <!--
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
@@ -38,13 +46,19 @@
 
     <script src="app/app.js"></script>
 
+    <script src="app/functions/objectToParams.js"></script>
+    <script src="app/functions/objectEncode.js"></script>
+
     <script src="app/services/global.js"></script>
+
+
     <script src="app/services/YandexSearch.js"></script>
     <script src="app/services/suggestion.js"></script>
 
     <script src="app/filters/limittodots.js"></script>
 
     <script src="app/directives/autofocus.js"></script>
+
 
     <script src="app/controllers/index.controller.js"></script>
     <script src="app/controllers/search.controller.js"></script>
@@ -54,5 +68,6 @@
     <script src="app/controllers/signin.controller.js"></script>
     <script src="app/controllers/signout.controller.js"></script>
     <script src="app/controllers/test.controller.js"></script>
+    -->
 </body>
 </html>
