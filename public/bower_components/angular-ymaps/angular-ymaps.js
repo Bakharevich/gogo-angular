@@ -89,7 +89,7 @@ angular.module('ymaps', [])
         timeout = setTimeout(later, wait);
     };
 })
-.controller('YmapController', ['$scope', '$element', 'ymapsLoader', 'ymapsConfig', 'debounce', function ($scope, $element, ymapsLoader, config, debounce) {
+.controller('YmapController', ['$scope', '$element', 'ymapsLoader', 'ymapsConfig', 'debounce', '$window', function ($scope, $element, ymapsLoader, config, debounce, $window) {
     "use strict";
     function initAutoFit(map, collection, ymaps) {
         collection.events.add('boundschange', debounce(function () {
@@ -107,7 +107,13 @@ angular.module('ymaps', [])
             }
         }, 100));
     }
+
     var self = this;
+
+    $scope.return = function() {
+        $location.path('/');
+    }
+
     ymapsLoader.ready(function(ymaps) {
         self.addMarker = function(coordinates, properties, options) {
             var placeMark = new ymaps.Placemark(coordinates, properties, options);
@@ -123,7 +129,24 @@ angular.module('ymaps', [])
             zoom     : $scope.zoom || 0,
             behaviors: config.mapBehaviors
         });
+
         var collection = new ymaps.GeoObjectCollection({}, config.markerOptions);
+
+        var firstButton = new ymaps.control.Button("Кнопка");
+        var gogoButton = new ymaps.control.Button({
+            data: {
+                content: "GoGo.by",
+                image: '/favicon.png'
+            },
+            options: {
+                maxWidth: 250
+            }
+        });
+        gogoButton.events.add('click', function(){
+            $window.location.href = '/index.html';
+        });
+        self.map.controls.add(gogoButton, {float: 'left'});
+
         if(config.clusterize) {
           $scope.markers = new ymaps.Clusterer(config.clusterOptions);
           collection.add($scope.markers);

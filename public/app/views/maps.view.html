@@ -1,52 +1,37 @@
 
     <div ng-init="coords=[53.899663, 27.575387];center=[53.899663, 27.575387];zoom=12">
         <yandex-map center="center" zoom="zoom">
-            <!-- а маркер теперь синий! -->
             <ymap-marker coordinates="coords"></ymap-marker>
-    </yandex-map>
+        </yandex-map>
+    </div>
 
-
-        <style type="text/css">
-            html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            div[ng-controller], div[ng-init] {
-                position: relative;
-                height: 100%;
-            }
-            yandex-map {
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-            .window {
-                background: rgba(255, 255, 255, 0.6);
-                position: absolute;
-                padding: 10px;
-                border-radius: 5px;
-                top: 10px;
-                left: 10px;
-            }
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        div[ng-controller], div[ng-init] {
+            position: relative;
+            height: 100%;
+        }
+        yandex-map {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .window {
+            background: rgba(255, 255, 255, 0.6);
+            position: absolute;
+            padding: 10px;
+            border-radius: 5px;
+            top: 10px;
+            left: 10px;
+        }
         </style>
 
-        <div style="position: absolute; left: 445px; top: 0px; z-index: 2; background: #CCC; margin-left: auto; margin-right: 200px; width: 500px;">
-            <div class="text-center" style="margin-bottom: 0px;">
-                <ul class="main_menu">
-                    <li><a href="#/search">Search</a></li>
-                    <li>Maps</li>
-                    <li><a href="#/translate/">Translate</a></li>
-                    <li class="highlight" ng-if="!user">
-                        <a href="#/signin">Sign in</a> / <a href="#/signup">Sign up</a>
-                    </li>
-                    <li class="highlight" ng-if="user">
-                        <a href="#/signout">Sign out</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
 
         <!--
                 https://github.com/just-boris/angular-ymaps

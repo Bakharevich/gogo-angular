@@ -8,7 +8,7 @@ var app = angular.module('gogo', [
     'ui.bootstrap'
 ]);
 
-app.config(['$routeProvider', function($routeProvider){
+app.config(['$routeProvider', 'ymapsConfig', function($routeProvider, ymapsConfig){
     $routeProvider.
         when('/', {
             templateUrl: 'app/views/index.view.html',
@@ -45,6 +45,8 @@ app.config(['$routeProvider', function($routeProvider){
         otherwise({
             redirectTo: '/'
         })
+
+    ymapsConfig.markerOptions.preset = 'islands#darkblueDotIcon';
 }]);
 
 app.controller('MainCtrl', ['$scope','$http', 'Global', function($scope, $http, Global) {
