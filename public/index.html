@@ -9,30 +9,27 @@
     <meta name="author" content="Ilya Bakharevich">
     <link rel="icon" type="image/png" href="/favicon.png">
     <title ng-bind="title">GoGo.by - поисковая система Беларуси</title>
-    <link href="/css/gogo.min.css" rel="stylesheet">
-    <!--
+    <!-- <link href="/css/gogo.min.css" rel="stylesheet"> -->
+
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/angular-toastr/dist/angular-toastr.min.css" rel="stylesheet">
     <link href="css/resolutions.css" rel="stylesheet">
-
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/custom_main.css" rel="stylesheet">
     <link href="css/custom_results.css" rel="stylesheet">
     <link href="css/custom_themes.css" rel="stylesheet">
-    -->
-
 </head>
 
 <body class="main-bg" ng-class="['main-bg-theme-' + themeId]">
     <div class="main-bg-light-switchedoff" ng-view ng-init="getUser()"></div>
 
-    <script src="/app/gogo.min.js"></script>
-    <!--
-    <script src="app/vendor.min.js"></script>
-    <script src="app/app.min.js"></script>
-    -->
+    <!-- PRODUCTION -->
+    <!--<script src="/app/gogo.min.js"></script>-->
 
-    <!--
+    <!-- Two JS -->
+    <!--<script src="app/vendor.min.js"></script><script src="app/app.min.js"></script>-->
+
+    <!-- DEVELOPMENT -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
@@ -42,25 +39,16 @@
     <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
     <script src="bower_components/angular-ymaps/angular-ymaps.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
     <script src="app/app.js"></script>
-
     <script src="app/functions/objectToParams.js"></script>
     <script src="app/functions/objectEncode.js"></script>
-
     <script src="app/services/global.js"></script>
-
-
     <script src="app/services/YandexSearch.js"></script>
     <script src="app/services/suggestion.js"></script>
-
     <script src="app/filters/limittodots.js"></script>
-
     <script src="app/directives/autofocus.js"></script>
-
-
     <script src="app/controllers/index.controller.js"></script>
     <script src="app/controllers/search.controller.js"></script>
     <script src="app/controllers/maps.controller.js"></script>
@@ -69,6 +57,5 @@
     <script src="app/controllers/signin.controller.js"></script>
     <script src="app/controllers/signout.controller.js"></script>
     <script src="app/controllers/test.controller.js"></script>
-    -->
 </body>
 </html>
