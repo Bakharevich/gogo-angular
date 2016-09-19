@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var ngAnnotate = require('gulp-ng-annotate')
 var gulpUtil = require('gulp-util');
 var cleanCSS = require('gulp-clean-css');
+var watch = require('gulp-watch');
 
 // path
 var bowerPath = 'bower_components/';
@@ -51,7 +52,6 @@ gulp.task('vendor', function() {
         .pipe(concat('vendor.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('app'));
-
 });
 
 gulp.task('app', function() {
@@ -68,7 +68,7 @@ gulp.task('minify-css', function() {
         .pipe(gulp.dest('css/dist'));
 });
 
-gulp.task('scripts', ['vendor', 'app', 'minify-css'], function () {
+gulp.task('default', ['vendor', 'app', 'minify-css'], function () {
     gulp.src(cssPath + 'dist/*.css')
         .pipe(concat('gogo.min.css'))
         .pipe(gulp.dest(cssPath));
